@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Como Funciona?</title>
+<style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(to bottom right, #00bfff, #ffb347); 
+        }
+        .contenedor {
+            width: 80%;
+            max-width: 1200px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            border-radius: 8px;
+			border-top-left-radius: 15px;
+			border-top-right-radius: 15px;
+            overflow: hidden;
+			box-sizing: border-box;
+        }
+        .encabezado {
+            background-color: #343A40;
+            padding: 20px;
+            text-align: center;
+			border-top-left-radius: 15px;
+			border-top-right-radius: 15px;
+			border: 6px solid #000000;
+        }
+        .encabezado img {
+            width: 99%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+			border: 6px solid #000000;
+        }
+        .menu-fijo {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            width: 100%;
+            z-index: 1000;
+            max-height: auto;
+            max-width: auto;
+			border-bottom-left-radius: 15px;
+			border-bottom-right-radius: 15px;
+			border: 6px solid #000000;
+		}
+		.menu{
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            width: 100%;
+            z-index: 1000;
+            max-height: auto;
+            max-width: auto;
+			border-bottom-left-radius: 15px;
+			border-bottom-right-radius: 15px;
+			border-bottom: 6px solid #000000;
+        }
+        .menu ul, .menu-fijo ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li, .menu-fijo ul li {
+            display: inline-block;
+            margin: 0 5px;
+            position: relative;
+        }
+        .menu ul li a, .menu-fijo ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            background-color: #28a745;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: 4px solid #007728;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu ul li a img.mi {
+            max-height: 20px;
+            max-width: 20px;
+            margin-right: 8px;
+        }
+        .menu ul li a:hover, .menu-fijo ul li a:hover {
+            background-color: #218838;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transform: scale(1.03);
+        }
+        .menu-fijo {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #343a40;
+            padding: 0;
+            z-index: 1000;
+        }
+        .menu-titulo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-right: auto;
+            padding-left: 20px;
+        }
+        .menu-fijo ul {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+        .menu-fijo ul li {
+            margin: 0.5rem;
+        }
+        .menu-fijo ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            background-color: #28a745;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: 4px solid #007728;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            padding: auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .menu-fijo ul li a:hover {
+            background-color: #218838;
+            text-decoration: none;
+            transform: scale(1.02);
+        }
+        .introduccion {
+            padding: 20px;
+            text-align: center;
+        }
+        .introduccion h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+        .introduccion p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 0 auto 20px auto;
+            max-width: 400px;
+        }
+	.introduccion2 p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 20px 20px 20px;
+            max-width: 900px;
+        }
+        .caja-imagen {
+    		display: flex;
+    		justify-content: left;
+    		margin: 20px auto;
+    		border: 5px solid;
+    		overflow: hidden;
+    		max-height: 400px;
+    		max-width: 400px;
+            border-image: linear-gradient(to bottom right, #00bfff, #ffb347) 1;
+		    border-radius: 8px;
+		}
+        .caja-imagen img,{
+            width: 100%;
+            height: auto;
+        }
+		.a{
+			max-height: 400px;
+			max-width: 400px;
+			height: 400px;
+			width: 400px;
+		}
+		.imagen-intercambiable {
+    position: relative;
+    transition: filter 1s ease-in-out;
+}
+.imagen-intercambiable:hover {
+    animation: colorChange 1s forwards;
+}
+	.imagen-intercambiable:not(:hover) {
+    animation: colorChangeOut 1s forwards;
+}
+	@keyframes colorChange {
+    0% {
+        filter: none;
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        filter: none;
+        opacity: 1;
+    }
+}
+	@keyframes colorChangeOut {
+    0% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+	.carrusel {
+    position: relative;
+    width: 55%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 25px; 
+    border: 5px solid #000; 
+}
+
+.imagenes {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.imagenes img {
+    width: 100%;
+    flex: 0 0 100%;
+    border-radius: 15px; 
+}
+
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+    z-index: 10; 
+}
+
+.prev {
+    left: 10px; 
+}
+
+.next {
+    right: 10px; 
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+	.pie-pagina {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            border: 6px solid #000000;
+            position: bottom;
+            bottom: 0;
+            width: 95%;
+			border-radius: 8px;
+			margin: 15px auto;
+        }
+        .pie-pagina p {
+            margin: auto;
+            font-size: 14px;
+        }
+        .pie-pagina a {
+            color: white;
+            text-decoration: none;
+            margin: auto;
+            font-size: 14px;
+        }
+		.wsp {
+    background-color: #90ee90;
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+    display: inline-block;
+}
+	.gmail {
+    background-color: #8A8A8A;
+    border: 4px solid;
+    border-image: linear-gradient(45deg, #4285F4, #EA4335, #FABB05, #34A853);
+    border-image-slice: 1;
+    border-radius: 12px;
+    padding: 10px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+	.titulo{
+    background-color: #dcdcdc;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    padding: 10px;
+    display: inline-block;
+    color: #000000;
+    font-size: 30px;
+	}
+	.imagen-intercambiable {
+    position: relative;
+    transition: filter 1s ease-in-out;
+}
+.imagen-intercambiable:hover {
+    animation: colorChange 1s forwards;
+}
+	.imagen-intercambiable:not(:hover) {
+    animation: colorChangeOut 1s forwards;
+}
+	@keyframes colorChange {
+    0% {
+        filter: none;
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        filter: none;
+        opacity: 1;
+    }
+}
+	@keyframes colorChangeOut {
+    0% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+	.contenedortxt{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+	.video {
+            flex: 1;
+            max-width: 50%;
+        }
+	.text {
+            flex: 1;
+            max-width: 50%;
+        }
+	table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 30px auto;
+        }
+        th, td {
+            border: 6px solid #138DFF;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+	.mapa {
+		margin: 40px auto;
+		border-radius: 10px;
+	}
+    </style>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+</script>
+</head>
+<body onLoad="MM_preloadImages('imgs-Index/ia-fun2.jfif')">
+    <div class="menu-fijo">
+        <div class="menu-titulo">
+            <p class="titulo">IA</p>
+        </div>
+        <ul>
+            <li><a href="Index.html">Inicio</a></li>
+            <li><a href="Como Funciona.html">Cómo Funciona</a></li>
+            <li><a href="Tipos.html">Tipos</a></li>
+            <li><a href="Que Es.html">Qué es?</a></li>
+            <li><a href="sep.html">-Info-</a></li>
+        </ul>
+</div>
+    <div class="contenedor">
+        <div class="encabezado">
+            <img src="imgs-Index/IA-Encabezado.jpg" alt="Imagen de Encabezado">
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="Index.html">Inicio</a></li>
+                <li><a href="Como Funciona.html">Cómo Funciona</a></li>
+                <li><a href="Tipos.html">Tipos</a></li>
+                <li><a href="Que Es.html">Qué es?</a></li>
+                <li><a href="sep.html">-Info-</a></li>
+            </ul>
+        </div>
+        <div class="introduccion">
+          <h2 style="font-size: 50px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">¿Que Es Una Inteligencia Artificial?</h2>
+        </div>
+		<table class="tabla">
+        <thead>
+            <tr>
+                <th>Función</th>
+                <th>Qué es</th>
+                <th>Cómo funciona</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Asistente Virtual</td>
+                <td>IA diseñada para interactuar con usuarios mediante texto o voz.</td>
+                <td>Utiliza procesamiento del lenguaje natural (NLP) para entender y generar respuestas. Implementa algoritmos de machine learning para mejorar con el tiempo. Ejemplos: Siri, Alexa.</td>
+            </tr>
+            <tr>
+                <td>Sistema de Recomendación</td>
+                <td>IA que sugiere productos, contenidos o servicios basados en preferencias del usuario.</td>
+                <td>Analiza datos de usuario, historial de compras o navegación, y utiliza algoritmos de filtrado colaborativo o basado en contenido para hacer recomendaciones. Ejemplos: Netflix, Amazon.</td>
+            </tr>
+            <tr>
+                <td>Reconocimiento de Imágenes</td>
+                <td>IA que identifica y clasifica objetos o características en imágenes.</td>
+                <td>Emplea redes neuronales convolucionales (CNNs) para extraer características de imágenes y realizar tareas de clasificación o detección. Ejemplos: Google Photos, sistemas de vigilancia.</td>
+            </tr>
+            <tr>
+                <td>Chatbot</td>
+                <td>IA que simula una conversación con usuarios en interfaces de chat.</td>
+                <td>Basado en reglas predefinidas o modelos de NLP, interpreta las entradas del usuario y genera respuestas. Puede usar machine learning para mejorar la precisión de las respuestas. Ejemplos: Chatbots en sitios web.</td>
+            </tr>
+            <tr>
+                <td>Análisis de Sentimientos</td>
+                <td>IA que detecta y clasifica emociones o opiniones en textos.</td>
+                <td>Utiliza modelos de NLP para analizar el texto y determinar si el sentimiento expresado es positivo, negativo o neutral. Emplea técnicas como análisis de polaridad y subjetividad. Ejemplos: Herramientas de análisis de redes sociales.</td>
+            </tr>
+            <tr>
+                <td>Reconocimiento de Voz</td>
+                <td>IA que convierte el habla en texto.</td>
+                <td>Usa modelos de aprendizaje profundo para interpretar ondas sonoras y convertirlas en texto. Implica procesos como la separación de fonemas y la correspondencia de palabras. Ejemplos: Google Speech-to-Text.</td>
+            </tr>
+            <tr>
+                <td>Generación de Texto</td>
+                <td>IA que crea texto coherente y relevante basado en entradas dadas.</td>
+                <td>Emplea modelos de lenguaje como GPT (Generative Pre-trained Transformer) para generar texto. Analiza el contexto y utiliza redes neuronales para producir texto que imita el estilo humano. Ejemplos: ChatGPT, GPT-4.</td>
+            </tr>
+        </tbody>
+    </table>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.1865466877684!2d-122.41720532517203!3d37.76222387198852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e3aef063141%3A0xcd8d4b8ec7bc4d0c!2sOpenAI%2C%20Inc.!5e0!3m2!1ses-419!2sco!4v1725623164437!5m2!1ses-419!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mapa caja-imagen imagen-intercambiable"></iframe>
+		<div class="pie-pagina">
+        <p>&copy; 2024 Qué Es Una IA. Todos los derechos reservados.</p>
+        <p><a class="gmail" href="https://mail.google.com/mail/?view=cm&fs=1&to=jesucraft170808@gmail.com" target="new">Correo Electronico</a> | <a class="wsp" href="https://wa.me/3246735826" target="new"><strong>WhatsApp</strong></a></p>
+    		</div>
+    </div>
+    <script>
+        window.onscroll = function() {
+            var menu = document.querySelector('.menu');
+            var menuFijo = document.querySelector('.menu-fijo');
+            if (window.pageYOffset > menu.offsetTop) {
+                menuFijo.style.display = 'flex';
+            } else {
+                menuFijo.style.display = 'none';
+            }
+        };
+    </script>
+	<script>
+		let index = 0;
+
+function showImage(n) {
+    const slides = document.querySelectorAll('.imagenes img');
+    const totalSlides = slides.length;
+    if (n >= totalSlides) index = 0;
+    if (n < 0) index = totalSlides - 1;
+    const slideWidth = slides[0].clientWidth;
+    document.querySelector('.imagenes').style.transform = `translateX(-${index * slideWidth}px)`;
+}
+
+function plusSlides(n) {
+    showImage(index += n);
+}
+
+document.querySelector('.prev').addEventListener('click', () => plusSlides(-1));
+document.querySelector('.next').addEventListener('click', () => plusSlides(1));
+
+window.onload = () => showImage(index);
+
+
+	</script>
+</body>
+</html>
