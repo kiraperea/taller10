@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qué Es Una IA?</title>
+<style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(to bottom right, #00bfff, #ffb347); 
+        }
+        .contenedor {
+            width: 80%;
+            max-width: 1200px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            border-radius: 8px;
+			border-top-left-radius: 15px;
+			border-top-right-radius: 15px;
+            overflow: hidden;
+			box-sizing: border-box;
+        }
+        .encabezado {
+            background-color: #343A40;
+            padding: 20px;
+            text-align: center;
+			border-top-left-radius: 15px;
+			border-top-right-radius: 15px;
+			border: 6px solid #000000;
+        }
+        .encabezado img {
+            width: 99%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+			border: 6px solid #000000;
+        }
+        .menu-fijo {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            width: 100%;
+            z-index: 1000;
+            max-height: auto;
+            max-width: auto;
+			border-bottom-left-radius: 15px;
+			border-bottom-right-radius: 15px;
+			border: 6px solid #000000;
+		}
+		.menu{
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            width: 100%;
+            z-index: 1000;
+            max-height: auto;
+            max-width: auto;
+			border-bottom-left-radius: 15px;
+			border-bottom-right-radius: 15px;
+			border-bottom: 6px solid #000000;
+        }
+        .menu ul, .menu-fijo ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li, .menu-fijo ul li {
+            display: inline-block;
+            margin: 0 5px;
+            position: relative;
+        }
+        .menu ul li a, .menu-fijo ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            background-color: #28a745;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: 4px solid #007728;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu ul li a img.mi {
+            max-height: 20px;
+            max-width: 20px;
+            margin-right: 8px;
+        }
+        .menu ul li a:hover, .menu-fijo ul li a:hover {
+            background-color: #218838;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transform: scale(1.03);
+        }
+        .menu-fijo {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #343a40;
+            padding: 0;
+            z-index: 1000;
+        }
+        .menu-titulo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-right: auto;
+            padding-left: 20px;
+        }
+        .menu-fijo ul {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+        .menu-fijo ul li {
+            margin: 0.5rem;
+        }
+        .menu-fijo ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            background-color: #28a745;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: 4px solid #007728;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            padding: auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .menu-fijo ul li a:hover {
+            background-color: #218838;
+            text-decoration: none;
+            transform: scale(1.02);
+        }
+        .introduccion {
+            padding: 20px;
+            text-align: center;
+        }
+        .introduccion h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+        .introduccion p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 auto 20px auto;
+            max-width: 400px;
+        }
+	.introduccion2 p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 20px 20px 20px;
+            max-width: 900px;
+        }
+        .caja-imagen {
+    		display: flex;
+    		justify-content: center;
+    		margin: 20px auto;
+    		border: 5px solid;
+    		overflow: hidden;
+    		max-height: 400px;
+    		max-width: 400px;
+            border-image: linear-gradient(to bottom right, #00bfff, #ffb347) 1;
+		    border-radius: 8px;
+		}
+        .caja-imagen img,{
+            width: 100%;
+            height: auto;
+        }
+		.a{
+			max-height: 400px;
+			max-width: 400px;
+			height: 400px;
+			width: 400px;
+		}
+		.imagen-intercambiable {
+    position: relative;
+    transition: filter 1s ease-in-out;
+}
+.imagen-intercambiable:hover {
+    animation: colorChange 1s forwards;
+}
+	.imagen-intercambiable:not(:hover) {
+    animation: colorChangeOut 1s forwards;
+}
+	@keyframes colorChange {
+    0% {
+        filter: none;
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        filter: none;
+        opacity: 1;
+    }
+}
+	@keyframes colorChangeOut {
+    0% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+	.pie-pagina {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            border: 6px solid #000000;
+            position: bottom;
+            bottom: 0;
+            width: 100%;
+			border-radius: 8px;
+        }
+        .pie-pagina p {
+            margin: auto;
+            font-size: 14px;
+        }
+        .pie-pagina a {
+            color: white;
+            text-decoration: none;
+            margin: auto;
+            font-size: 14px;
+        }
+		.wsp {
+    background-color: #90ee90;
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+    display: inline-block;
+}
+	.gmail {
+    background-color: #8A8A8A;
+    border: 4px solid;
+    border-image: linear-gradient(45deg, #4285F4, #EA4335, #FABB05, #34A853);
+    border-image-slice: 1;
+    border-radius: 12px;
+    padding: 10px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+	.titulo{
+    background-color: #dcdcdc;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    padding: 10px;
+    display: inline-block;
+    color: #000000;
+    font-size: 30px;
+	}
+	.contenedortxt{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+	.video {
+            flex: 1;
+            max-width: 50%;
+        }
+	.text {
+            flex: 1;
+            max-width: 50%;
+        }
+    </style>
+</head>
+<body onLoad="MM_preloadImages('imgs-Index/IA-Introduccion1.5.jfif','imgs-Index/IA-Introduccion2.5.jfif')">
+    <div class="menu-fijo">
+        <div class="menu-titulo">
+            <p class="titulo">IA</p>
+        </div>
+        <ul>
+            <li><a href="Index.html">Inicio</a></li>
+            <li><a href="Como Funciona.html">Cómo Funciona</a></li>
+            <li><a href="Tipos.html">Tipos</a></li>
+            <li><a href="Que Es.html">Qué es?</a></li>
+            <li><a href="sep.html">-Info-</a></li>
+        </ul>
+</div>
+    <div class="contenedor">
+        <div class="encabezado">
+            <img src="imgs-Index/IA-Encabezado.jpg" alt="Imagen de Encabezado">
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="Index.html">Inicio</a></li>
+                <li><a href="Como Funciona.html">Cómo Funciona</a></li>
+                <li><a href="Tipos.html">Tipos</a></li>
+                <li><a href="Que Es.html">Qué es?</a></li>
+                <li><a href="sep.html">-Info-</a></li>
+            </ul>
+        </div>
+        <div class="introduccion">
+          <h2 style="font-size: 50px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Qué Necesitas Saber</h2>
+            <div class="contenedortxt">
+                <p>En la última década, la <strong>Inteligencia Artificial (IA)</strong> ha dejado de ser un concepto de ciencia ficción para convertirse en una realidad palpable que está transformando todos los aspectos de nuestra vida cotidiana. Desde la manera en que interactuamos con nuestros dispositivos hasta la forma en que las empresas toman decisiones estratégicas, la IA está remodelando el mundo a una velocidad asombrosa. Pero, ¿qué es exactamente la Inteligencia Artificial, y por qué está generando tanto interés y entusiasmo?
+                La <strong>Inteligencia Artificial</strong> se refiere a la capacidad de una máquina para imitar comportamientos inteligentes humanos. Esto incluye la capacidad de <strong>aprender de la experiencia</strong>, <strong>adaptarse a nuevas informaciones</strong>, <strong>comprender el lenguaje natural</strong>, realizar <strong>tareas complejas</strong>, e incluso <strong>tomar decisiones</strong>. A lo largo de los años, la IA ha evolucionado desde simples algoritmos de procesamiento de datos hasta sistemas complejos que pueden realizar funciones sofisticadas como el <strong>reconocimiento facial</strong>, la <strong>traducción de idiomas en tiempo real</strong>, y la <strong>conducción autónoma de vehículos</strong>.</p>
+            <a href="https://www.youtube.com/watch?v=_tA5cinv0U8&pp=ygUaaW50ZWxpZ2VuY2lhcyBhcnRpZmljaWFsZXM%3D" class="caja-imagen imagen-intercambiable" onMouseOver="MM_swapImage('Image4','','imgs-Index/IA-Introduccion1.5.jfif',1)" onMouseOut="MM_swapImgRestore()"><img src="imgs-Index/IA-Introduccion1.jfif" alt="" class="a" id="Image4"></a>
+			</div>
+			<div class="contenedortxt">
+			<p>Una de las áreas más emocionantes de la IA es el <strong>aprendizaje automático (machine learning)</strong>, que permite a los sistemas aprender y mejorar a partir de datos sin intervención humana explícita. A través del aprendizaje automático, los sistemas de IA pueden analizar grandes volúmenes de datos para identificar patrones, hacer <strong>predicciones</strong> y tomar decisiones basadas en información acumulada. Esta tecnología está detrás de una amplia gama de aplicaciones, desde los <strong>motores de búsqueda de internet</strong> y los <strong>sistemas de recomendación</strong> en plataformas de streaming, hasta las <strong>herramientas de diagnóstico médico</strong> y los <strong>asistentes virtuales</strong> como Siri y Alexa.
+			  El impacto de la IA en los negocios es igualmente significativo. Las empresas están utilizando la IA para <strong>optimizar procesos</strong>, <strong>mejorar la eficiencia</strong> y ofrecer <strong>experiencias personalizadas</strong> a sus clientes. Los <strong>chatbots</strong> impulsados por IA están revolucionando el <strong>servicio al cliente</strong> al proporcionar respuestas instantáneas y precisas a las consultas de los usuarios. En el ámbito del marketing, los algoritmos de IA analizan el comportamiento del consumidor para crear campañas más <strong>efectivas</strong> y dirigidas.</p>
+            <a href="https://www.youtube.com/watch?v=8lMIdrlIWOQ&pp=ygUXaW50ZWxpZ2VuY2lhIGFydGlmaWNpYWw%3D" class="caja-imagen imagen-intercambiable" onMouseOver="MM_swapImage('img2','','imgs-Index/IA-Introduccion2.5.jfif',1)" onMouseOut="MM_swapImgRestore()"><img src="imgs-Index/IA-Introduccion2.png" alt="" class="a" id="img2"></a>
+		</div>
+			<div class="introduccion2">
+                <p>Sin embargo, con todas estas oportunidades vienen <strong>desafíos y consideraciones éticas</strong>. La creciente presencia de la IA en nuestra vida cotidiana plantea preguntas importantes sobre la <strong>privacidad</strong>, la <strong>seguridad</strong> y el impacto en el <strong>empleo</strong>. A medida que los sistemas de IA se vuelven más avanzados, es crucial garantizar que se desarrollen y utilicen de manera <strong>responsable</strong> y <strong>equitativa</strong>.
+			    La <strong>transparencia</strong> en el uso de datos y la <strong>regulación ética</strong> serán fundamentales para aprovechar los beneficios de la IA sin comprometer los derechos y la dignidad humana.</p>
+                <p>En este sitio, exploraremos a fondo <strong>qué es la IA</strong>, <strong>cómo funciona</strong>, qué <strong>tipos existen</strong>, y en qué <strong>aplicaciones</strong> reales se está utilizando. También analizaremos las <strong>implicaciones futuras</strong> de la IA en diversos sectores y cómo podemos prepararnos para un mundo donde las máquinas no solo nos asisten, sino que también toman decisiones de manera <strong>autónoma</strong>.</p>
+            </div>
+		  <div class="pie-pagina">
+        <p>&copy; 2024 Qué Es Una IA. Todos los derechos reservados.</p>
+        <p><a class="gmail" href="https://mail.google.com/mail/?view=cm&fs=1&to=jesucraft170808@gmail.com" target="new">Correo Electronico</a> | <a class="wsp" href="https://wa.me/3246735826" target="new"><strong>WhatsApp</strong></a></p>
+    		</div>
+        </div>
+	</div>
+    <script>
+        window.onscroll = function() {
+            var menu = document.querySelector('.menu');
+            var menuFijo = document.querySelector('.menu-fijo');
+            if (window.pageYOffset > menu.offsetTop) {
+                menuFijo.style.display = 'flex';
+            } else {
+                menuFijo.style.display = 'none';
+            }
+        };
+    </script>
+	<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+</script>
+</body>
+</html>
